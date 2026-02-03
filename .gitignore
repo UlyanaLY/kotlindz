@@ -5,6 +5,7 @@ build/
 !**/src/test/**/build/
 .kotlin
 node_modules
+env
 
 ### IntelliJ IDEA ###
 .idea/modules.xml

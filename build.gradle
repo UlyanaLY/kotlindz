@@ -15,13 +15,11 @@ kotlin {
     jvmToolchain(24)
 }
 
-
 test {
     useJUnitPlatform {
         if (System.getProperty("TAGS")) {
             includeTags System.getProperty("TAGS")
-            //excludeTags System.getProperty("TAGS")
-        } //gradle clean test test -DTAGS=REGRES
+        }
     }
 
     dependsOn("cleanTest")
@@ -30,10 +28,8 @@ test {
         events "passed", "skipped", "failed"
     }
 
-    //Pass system properties into JVM with tests
-    systemProperties(System.getProperties())
+    systemProperties(System.getProperties() as Map<String, ? extends Object>)
 }
-
 
 configurations {
     agent {
