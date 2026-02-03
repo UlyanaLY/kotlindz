@@ -1,0 +1,63 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '2.3.0'
+    id 'io.qameta.allure' version '3.0.1'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+kotlin {
+    jvmToolchain(24)
+}
+
+
+test {
+    useJUnitPlatform {
+        if (System.getProperty("TAGS")) {
+            includeTags System.getProperty("TAGS")
+            //excludeTags System.getProperty("TAGS")
+        } //gradle clean test test -DTAGS=REGRES
+    }
+
+    dependsOn("cleanTest")
+    dependsOn("cleanAllureResults")
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+
+    //Pass system properties into JVM with tests
+    systemProperties(System.getProperties())
+}
+
+
+configurations {
+    agent {
+        canBeResolved = true
+        canBeConsumed = true
+    }
+}
+
+tasks.register("cleanAllureResults", Delete) {
+    delete("$buildDir/allure-results", "$buildDir/allure-report")
+}
+
+dependencies {
+    // JUnit
+    implementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: '6.0.2'
+
+    // Frontend
+    implementation group: 'com.codeborne', name: 'selenide', version: '7.14.0'
+
+    // Assert
+    implementation group: 'io.kotest', name: 'kotest-assertions-core', version: '6.1.1'
+
+    // Allure
+    agent "org.aspectj:aspectjweaver:1.9.22"
+    implementation group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.22'
+    implementation group: 'io.qameta.allure', name: 'allure-junit5', version: '2.32.0'
+}
