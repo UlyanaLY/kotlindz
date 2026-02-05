@@ -40,7 +40,7 @@ class ArrayTest {
     }
 
     @Test
-    @DisplayName("Array should not be empty - 3")
+    @DisplayName("Array should not be empty - 5")
     fun arrayShouldContainTenAndThirty() {
         val array = arrayOf(10, 20, 30, 40, 50)
         array.shouldContainAll(10, 30)
