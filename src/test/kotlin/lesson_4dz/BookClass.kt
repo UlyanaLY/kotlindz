@@ -13,25 +13,23 @@ data class BookClass(
     var pages: Int?,
     var price: Double = 1000.0
 ) {
-    init {
-        title = title ?: run {
-            val defaultValue = "Unknown title"
-            println("Title was null! Default value used: $defaultValue")
-            defaultValue
-        }
+    var bookTitle = title ?: let {
+        val defaultValue = "Unknown title"
+        println("Title was null! Default value used: $defaultValue")
+        defaultValue
+    }
 
-        author = author ?: run {
+    var bookAuthor = author ?: let {
             val defaultValue = "Unknown author"
             println("Author was null! Default value used: $defaultValue")
             defaultValue
-        }
+    }
 
-        pages = pages ?: run {
+    var bookPages = pages ?: let {
             val defaultValue = 0
             println("Pages was null! Default value used: $defaultValue")
             defaultValue
         }
-    }
 }
 
 fun BookClass.priceWithDiscount(discountPercent: Double): Double {

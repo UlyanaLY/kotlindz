@@ -8,27 +8,27 @@ class DataClassWithNullTest {
     @Test
     fun authorTest(){
         val book = BookClass(4, "The Nose", "Anton Chekhov", 150)
-        book.author shouldBe "Anton Chekhov"
+        book.bookAuthor shouldBe "Anton Chekhov"
     }
 
     @Test
     fun titleTest(){
         val book = BookClass(4, "Metro 2033", "Dmitry Glukhovsky", 151)
-        book.title shouldBe "Metro 2033"
+        book.bookTitle shouldBe "Metro 2033"
     }
 
     @Test
     fun pageTest(){
         val book = BookClass(4, "Shadow and Bone", "Leigh Bardugo", 152)
-        book.pages shouldBe 152
+        book.bookPages shouldBe 152
     }
 
     @Test
     fun nullFieldsTest(){
         val book = BookClass(5, null, null, null)
-        book.title shouldBe "Unknown title"
-        book.author shouldBe "Unknown author"
-        book.pages shouldBe 0
+        book.bookTitle shouldBe "Unknown title"
+        book.bookAuthor shouldBe "Unknown author"
+        book.bookPages shouldBe 0
     }
 
     @Test
