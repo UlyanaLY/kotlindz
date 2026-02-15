@@ -17,7 +17,6 @@ class ExtensionFunctions {
     @Test
     fun testStringExtensionFunction() {
         val phoneNumber = "+1234567890"
-
         phoneNumber.validatePhoneNumber() shouldBe true
     }
 }
