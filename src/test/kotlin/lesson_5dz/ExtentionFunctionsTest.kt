@@ -29,7 +29,7 @@ class ExtentionFunctionsTest {
     @Test
     fun isExpensive(){
         val book = BookClass(4, "The Nose", "Anton Chekhov", 150)
-        book isExpensive 100.0 shouldBe true
-        book isExpensive 1000.0 shouldBe false
+        book isExpensive 1001.0 shouldBe true
+        book isExpensive 100.0 shouldBe false
     }
 }

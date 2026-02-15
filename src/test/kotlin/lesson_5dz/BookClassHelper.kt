@@ -16,7 +16,7 @@ class BookClassHelper {
         }
 
         infix fun BookClass.isExpensive(expensivePrice: Double): Boolean {
-            return price > expensivePrice
+            return price < expensivePrice
         }
    }
 }
